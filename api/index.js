@@ -20,6 +20,8 @@ app.group("/api/v2", (router) => {
     router.get('/rooms', authenticated, Yarehotel.rooms)
     router.post('/room', authenticated, Yarehotel.addRoom)
     router.put('/room/:room_id', authenticated, Yarehotel.editRoom)
+    
+    router.get('/customers', authenticated, Yarehotel.customers)
 })
 
 
