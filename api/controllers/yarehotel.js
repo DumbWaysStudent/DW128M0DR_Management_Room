@@ -49,5 +49,26 @@ addCustomer:(req,res) => {
         image
     })
     .then(data => res.send(data))
+},
+
+editCustomer:(req,res) => {
+    const {customer_id} = req.params
+    const {name, identity_number, phone_number,image} = req.body
+    Customer.update({
+        name,
+        identity_number,
+        phone_number,
+        image
+    },{
+        where:{
+            id:customer_id
+        }
+    })
+    Customer.findOne({
+        where:{
+            id:customer_id
+        }
+    })
+    .then(data => res.send(data))
 }
 } //this is end of exports
