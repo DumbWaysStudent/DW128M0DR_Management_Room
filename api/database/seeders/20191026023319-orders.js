@@ -4,8 +4,6 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('orders', [
         {
-          room_id : 1,
-          customer_id : 1,
           duration : 10,
           order_end_time: "2019-10-21 02:29",
           is_done:false,
@@ -14,8 +12,6 @@ module.exports = {
           updatedAt: "2019-10-10 08:31"
         },
         {
-          room_id : 2,
-          customer_id : 2,
           duration : 10,
           order_end_time: "2019-10-21 02:29",
           is_done:false,
