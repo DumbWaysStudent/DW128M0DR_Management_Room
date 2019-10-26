@@ -13,5 +13,22 @@ addRoom:(req, res) => {
         name
     })
     .then(data => res.send(data))
+},
+editRoom:(req, res) => {
+    const {room_id} = req.params
+    const {name} = req.body
+    Rooms.update({
+        name
+    },{
+        where: { 
+            id: room_id
+        }
+    })
+    Rooms.findOne({
+        where:{
+            id:room_id
+        }
+    })
+    .then(data => res.send(data))
 }
 } //this is end of exports
