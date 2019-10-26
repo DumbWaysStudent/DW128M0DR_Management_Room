@@ -79,7 +79,7 @@ checkin:(req,res) => {
     .then(data => res.send(data))
 },
 
-addChicken:(req, res) => {
+addCheckin:(req, res) => {
     const {room_id, customer_id, duration, is_done, is_booked} = req.body
     const createdAt = res.createdAt
     Order.create({
