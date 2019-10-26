@@ -17,7 +17,8 @@ const { authenticated } = require('./middleware')
 app.group("/api/v2", (router) => { 
     router.post('/signin', AuthController.signin)
 
-    router.get('/rooms', authenticated, Yarehotel.Rooms)
+    router.get('/rooms', authenticated, Yarehotel.rooms)
+    router.post('/room', authenticated, Yarehotel.addRoom)
 })
 
 
