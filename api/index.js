@@ -24,6 +24,9 @@ app.group("/api/v2", (router) => {
     router.get('/customers', authenticated, Yarehotel.customers)
     router.post('/customer', authenticated, Yarehotel.addCustomer)
     router.put('/customer/:customer_id', authenticated, Yarehotel.editCustomer)
+
+    router.get('/checkin', authenticated, Yarehotel.checkin)
+    router.post('/checkin', authenticated, Yarehotel.addChicken)
 })
 
 

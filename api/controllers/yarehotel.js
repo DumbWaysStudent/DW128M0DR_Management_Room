@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize')
 const models = require('../database/models')
+const moment = require('moment')
 Rooms = models.rooms
 Customer = models.customers
+Order = models.orders
 
 module.exports = {
 rooms:(req,res) => {
@@ -68,6 +70,25 @@ editCustomer:(req,res) => {
         where:{
             id:customer_id
         }
+    })
+    .then(data => res.send(data))
+},
+
+checkin:(req,res) => {
+    Order.findAll()
+    .then(data => res.send(data))
+},
+
+addChicken:(req, res) => {
+    const {room_id, customer_id, duration, is_done, is_booked} = req.body
+    const createdAt = res.createdAt
+    Order.create({
+        room_id,
+        customer_id,
+        duration,
+        order_end_time : moment(createdAt).add(duration, 'hours').format('YYYY-MM-DD hh:mm'),
+        is_done,
+        is_booked
     })
     .then(data => res.send(data))
 }
