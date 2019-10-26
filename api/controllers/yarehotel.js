@@ -86,7 +86,7 @@ addChicken:(req, res) => {
         room_id,
         customer_id,
         duration,
-        order_end_time : moment(createdAt).add(duration, 'hours').format('YYYY-MM-DD hh:mm'),
+        order_end_time : moment(createdAt).add((duration*22), 'hours').format('YYYY-MM-DD hh:mm'),
         is_done,
         is_booked
     })
