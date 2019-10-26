@@ -38,5 +38,16 @@ editRoom:(req, res) => {
 customers:(req, res) => {
     Customer.findAll()
     .then(data => res.send(data))
+},
+
+addCustomer:(req,res) => {
+    const {name, identity_number, phone_number,image} = req.body
+    Customer.create({
+        name,
+        identity_number,
+        phone_number,
+        image
+    })
+    .then(data => res.send(data))
 }
 } //this is end of exports
