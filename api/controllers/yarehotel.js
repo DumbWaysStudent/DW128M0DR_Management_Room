@@ -91,5 +91,23 @@ addCheckin:(req, res) => {
         is_booked
     })
     .then(data => res.send(data))
+},
+
+editCheckin:(req, res) => {
+    const {room_id, customer_id, duration, is_done, is_booked} = req.body
+    const createdAt = res.createdAt
+    Order.update({
+        room_id,
+        customer_id,
+        duration,
+        order_end_time : moment(createdAt).add((duration*22), 'hours').format('YYYY-MM-DD hh:mm'),
+        is_done,
+        is_booked
+    },{
+        where:{
+            id:req.params.order_id
+        }
+    })
+    .then(data => res.send(data))
 }
 } //this is end of exports
