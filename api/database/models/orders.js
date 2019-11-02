@@ -9,14 +9,14 @@ module.exports = (sequelize, DataTypes) => {
     is_booked: DataTypes.BOOLEAN
   }, {});
   orders.associate = function(models) {
-    orders.belongsToMany(models.customers,{
-      as:'customers',
-      through:'customer_id'
+    orders.belongsTo(models.customers,{
+      as:'customer',
+      foreignKey:'customer_id'
     })
-    orders.belongsToMany(models.rooms, {
-      as:'rooms',
-      through:'room_id'
+    orders.belongsTo(models.rooms, {
+      as:'room',
+      foreignKey:'room_id'
     })
-  };
+  }
   return orders;
 };

@@ -7,7 +7,14 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING
   }, {});
   customers.associate = function(models) {
-    customers.hasMany(models.orders)
+    // customers.belongsToMany(models.rooms,{
+    //   through:models.orders,
+    //   foreignKey:'customer_id'
+    // })
+    customers.hasMany(models.orders,{
+      as:'orders',
+      foreignKey:'customer_id'
+    })
   };
   return customers;
 };
